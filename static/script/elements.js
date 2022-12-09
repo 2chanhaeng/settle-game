@@ -20,9 +20,7 @@ export default function showBody(){
 
 /**
  * <div class="choices">
- *   <div id="${i}">
- *     <div class="change"></div>
- *   </div>
+ *   <div class="card" id="${i}"></div>
  *   ...
  *   <button id="submit">Submit</button>
  * </div>
@@ -30,15 +28,45 @@ export default function showBody(){
  */
 function createChoices(){
     const choices = createElem(TAGS.div, {className: CLASS.choices});
-    for(let i = 0; i < cards; i++){
-        const div = createElem(TAGS.div, {id: i});
-        const change = createChange();
-        div.appendChild(change);
-        choices.appendChild(div);
+    for(let id = 0; id < cards; id++){
+        const card = createCard(id);
+        choices.appendChild(card);
     }
-    const submit = createElem(TAGS.button, {id: ID.submit, textContent: TEXT.submit});
+    const submitOpt = {id: ID.submit, textContent: TEXT.submit};
+    const submit = createElem(TAGS.button, submitOpt);
     choices.appendChild(submit);
     return choices;
+}
+
+/**
+ * <div class="card" id="${id}">
+ *   <div class="cardImage"></div>
+ *   <div class="change"></div>
+ * </div>
+ * @param {number} id 
+ * @returns {HTMLDivElement} div.card
+ */
+function createCard(id){
+    const cardOpt = {id: id, className: CLASS.card};
+    const card = createElem(TAGS.div, cardOpt);
+    const cardImage = createCardImage();
+    card.appendChild(cardImage);
+    const change = createChange();
+    card.appendChild(change);
+    return card;
+}
+
+/**
+ * <div class="cardImage">
+ *   <div class="figure"></div>
+ * </div>
+ * @returns {HTMLDivElement} div.cardImage
+ */
+function createCardImage(){
+    const cardImage = createElem(TAGS.div, {className: CLASS.cardImage});
+    const figure = createElem(TAGS.div, {className: CLASS.figure});
+    cardImage.appendChild(figure);
+    return cardImage;
 }
 
 /**

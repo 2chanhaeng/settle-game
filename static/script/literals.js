@@ -15,10 +15,13 @@ export const ALL_PARTS = Object.freeze([
 export const CLASS = Object.freeze({
     after: "after",
     before: "before",
+    card: "card",
+    cardImage: "cardImage",
     change: "change",
     choice: "choice",
     choices: "choices",
     control: "control",
+    figure: "figure",
 });
 
 export const DIFFICULTY = Object.freeze({
@@ -36,7 +39,7 @@ export const EVENT = Object.freeze({
 export const ID = Object.freeze({
     submit: "submit",
     result: "result",
-    resultBoard: "result-board",
+    resultBoard: "resultBoard",
 });
 
 export const TAGS = Object.freeze({
