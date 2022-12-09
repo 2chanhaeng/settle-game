@@ -16,6 +16,7 @@ export const CLASS = Object.freeze({
     after: "after",
     before: "before",
     card: "card",
+    cardBoard: "cardBoard",
     cardImage: "cardImage",
     change: "change",
     choice: "choice",

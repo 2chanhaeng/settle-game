@@ -20,22 +20,35 @@ export default function showBody(){
 
 /**
  * <div class="choices">
- *   <div class="card" id="${i}"></div>
- *   ...
+ *   <div class="cards"></div>
  *   <button id="submit">Submit</button>
  * </div>
  * @returns {HTMLDivElement} div.choices
  */
 function createChoices(){
     const choices = createElem(TAGS.div, {className: CLASS.choices});
-    for(let id = 0; id < cards; id++){
-        const card = createCard(id);
-        choices.appendChild(card);
-    }
+    const cardBoard = createCardBoard();
+    choices.appendChild(cardBoard);
     const submitOpt = {id: ID.submit, textContent: TEXT.submit};
     const submit = createElem(TAGS.button, submitOpt);
     choices.appendChild(submit);
     return choices;
+}
+
+/**
+ * <div class="cardBoard">
+ *   <div class="card" id="${i}"></div>
+ *   ...
+ * </div>
+ * @returns {HTMLDivElement} div.cardBoard
+ */
+function createCardBoard(){
+    const cardBoard = createElem(TAGS.div, {className: CLASS.cardBoard});
+    for(let id = 0; id < cards; id++){
+        const card = createCard(id);
+        cardBoard.appendChild(card);
+    }
+    return cardBoard;
 }
 
 /**
