@@ -2,18 +2,69 @@ input {
     display: none;
 }
 
+.figure {
+    /* center of the cardImage */
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    background-color: #fff;
+}
+
+.tilde {
+    clip-path: path("M 0 0 c 24 139 110 78 141 57 c 25 -20 56 -3 79 32 c -24 -139 -110 -78 -141 -57 c -25 20 -56 3 -79 -32 m 0 100 c 24 139 110 78 141 57 c 25 -20 56 -3 79 32 c -24 -139 -110 -78 -141 -57 c -25 20 -56 3 -79 -32 m 0 100 c 24 139 110 78 141 57 c 25 -20 56 -3 79 32 c -24 -139 -110 -78 -141 -57 c -25 20 -56 3 -79 -32");
+}
+
+.diamond {
+    clip-path: path("M 110 0 l 110 44.5 l -110 44.5 l  -110 -44.5 l 110 -44.5 m 0 100 l 110 44.5 l -110 44.5 l  -110 -44.5 l 110 -44.5 m 0 100 l 110 44.5 l -110 44.5 l  -110 -44.5 l 110 -44.5");
+}
+
+.oval {
+    clip-path: path("M 44.5 0 l 131 0 a 1 1 0 0 1 0 89 l -131 0 a 1 1 0 0 1 0 -89 m 0 110 l 131 0 a 1 1 0 0 1 0 89 l -131 0 a 1 1 0 0 1 0 -89 m 0 110 l 131 0 a 1 1 0 0 1 0 89 l -131 0 a 1 1 0 0 1 0 -89");
+}
+
+.one {
+    top: 40%;
+    height: 20%;
+}
+
+.two {
+    top: 27.5%;
+    height: 45%;
+}
+
+.three {
+    top: 15%;
+    height: 70%;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
 div.cardImage {
     width: 100%;
+    position: relative;
 }
 
 div.cardImage:before {
     content: "";
     display: block;
-    padding-top: 141.42%;
+    padding-top: var(--cardImageRatio);
 }
 
 div.control > button {
     flex: 1;
+    justify-content: stretch;
 }
 
 div.control{
@@ -40,11 +91,9 @@ body > div {
 }
 
 body {
-    width: min(960px, 100vw);
+    width: var(--bodyWidth);
     position: relative;
     margin: 0 auto;
-}
-
-html {
-    height: 100%;
+    --bodyWidth: min(960px, 100vw);
+    --cardImageRatio: 141.42%;
 }
