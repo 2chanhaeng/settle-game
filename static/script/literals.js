@@ -1,4 +1,5 @@
 "use strict";
+// @ts-check
 
 /**
  * save literals prevent typo error
@@ -18,6 +19,13 @@ export const CLASS = Object.freeze({
     choice: "choice",
     choices: "choices",
     control: "control",
+});
+
+export const DIFFICULTY = Object.freeze({
+    EASY: {
+        cards: 3,
+        parts: 4,
+    },
 });
 
 export const EVENT = Object.freeze({

@@ -1,11 +1,10 @@
 "use strict";
+// @ts-check
 
-import {TAGS, ALL_PARTS, CLASS, ID, TEXT, TYPE, EVENT} from "./literals.js";
+import {TAGS, ALL_PARTS, CLASS, ID, TEXT, TYPE, DIFFICULTY} from "./literals.js";
 
-const cards = 3, parts = 4;
+const {cards, parts} = DIFFICULTY.EASY;
 const part_kinds = ALL_PARTS.slice(0, parts);
-
-window.addEventListener(EVENT.load, showBody);
 
 /**
  * <body>
@@ -13,7 +12,7 @@ window.addEventListener(EVENT.load, showBody);
  *    <div id="result-borad"></div>
  * </body>
  */
-function showBody(){
+export default function showBody(){
     const body = document.body;
     body.appendChild(createChoices());
     body.appendChild(createResult());
