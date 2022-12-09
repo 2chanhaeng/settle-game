@@ -1,17 +1,11 @@
 "use strict";
 
-const TAGS = Object.freeze({
-    // prevent typo error
-    div: "div",
-    button: "button",
-    input: "input",
-    ul: "ul",
-});
+import {TAGS, ALL_PARTS, CLASS, ID, TEXT, TYPE, EVENT} from "./literals.js";
 
 const cards = 3, parts = 4;
-const COMPO_KINDS = ["number", "color", "shape", "fill_"].slice(0, parts);
+const part_kinds = ALL_PARTS.slice(0, parts);
 
-window.addEventListener("load", showBody);
+window.addEventListener(EVENT.load, showBody);
 
 /**
  * <body>
@@ -27,7 +21,7 @@ function showBody(){
 
 /**
  * <div class="choices">
- *   <div id="0">
+ *   <div id="${i}">
  *     <div class="change"></div>
  *   </div>
  *   ...
@@ -36,14 +30,14 @@ function showBody(){
  * @returns {HTMLDivElement} div.choices
  */
 function createChoices(){
-    const choices = createElem(TAGS.div, {className: "choices"});
+    const choices = createElem(TAGS.div, {className: CLASS.choices});
     for(let i = 0; i < cards; i++){
         const div = createElem(TAGS.div, {id: i});
         const change = createChange();
         div.appendChild(change);
         choices.appendChild(div);
     }
-    const submit = createElem("button", {id: "submit", textContent: "Submit"});
+    const submit = createElem(TAGS.button, {id: ID.submit, textContent: TEXT.submit});
     choices.appendChild(submit);
     return choices;
 }
@@ -55,8 +49,8 @@ function createChoices(){
  * @returns {HTMLDivElement} div#result-borad
  */
 function createResult(){
-    const result = createElem(TAGS.div, {id: "result-borad"});
-    const ul = createElem(TAGS.ul, {id: "result"});
+    const result = createElem(TAGS.div, {id: ID.resultBoard});
+    const ul = createElem(TAGS.ul, {id: ID.result});
     result.appendChild(ul);
     return result;
 }
@@ -69,8 +63,8 @@ function createResult(){
  * @returns {HTMLDivElement} div.change
  */
 function createChange(){
-    const change = createElem(TAGS.div, {className: "change"});
-    COMPO_KINDS.forEach(kind => {
+    const change = createElem(TAGS.div, {className: CLASS.change});
+    part_kinds.forEach(kind => {
         const control = createControl(kind);
         change.appendChild(control);
     });
@@ -87,20 +81,20 @@ function createChange(){
  * @returns {HTMLDivElement} div.control
  */
 function createControl(className){
-    const control = createElem(TAGS.div, {className: `control ${className}`});
+    const control = createElem(TAGS.div, {className: `${CLASS.control} ${className}`});
     const choiceOpt = {
-        type: "number",
+        type: TYPE.number,
         min: 0,
         max: cards - 1,
-        className: "choice"
+        className: CLASS.choice,
     },
     beforOpt = {
-        className: "before",
-        textContent: "←"
+        className: CLASS.before,
+        textContent: TEXT.leftArrow,
     },
     afterOpt = {
-        className: "after",
-        textContent: "→"
+        className: CLASS.after,
+        textContent: TEXT.rightArrow,
     };
     [
         [TAGS.input, choiceOpt],
