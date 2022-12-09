@@ -1,0 +1,50 @@
+input {
+    display: none;
+}
+
+div.cardImage {
+    width: 100%;
+}
+
+div.cardImage:before {
+    content: "";
+    display: block;
+    padding-top: 141.42%;
+}
+
+div.control > button {
+    flex: 1;
+}
+
+div.control{
+    display: flex;
+}
+
+div.change {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+div.card{
+    flex: auto;
+}
+
+div.cardBoard {
+    display: flex;
+    justify-content: center;
+}
+
+body > div {
+    margin: 8px;
+}
+
+body {
+    width: min(960px, 100vw);
+    position: relative;
+    margin: 0 auto;
+}
+
+html {
+    height: 100%;
+}
